@@ -58,17 +58,22 @@ class _telaState extends State<tela> {
             )),
         Expanded(
             flex: 1,
-            child: ElevatedButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.black45),
-              onPressed: () {
-                setState(() {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => add(ultimo: discentes.length)
-                  ));
-                });
-              },
-              child: Icon(Icons.add),
-            ))
+            child:
+            Container(child:
+              ElevatedButton(
+                style: TextButton.styleFrom(backgroundColor: Colors.black45),
+                onPressed: () {
+                  setState(() {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => add(ultimo: discentes.length)
+                    ));
+                  });
+                },
+                child: Icon(Icons.add),
+              ),
+              margin: new EdgeInsets.all(2.0),
+          )
+        )
       ],
     );
   }
@@ -109,7 +114,7 @@ class _telaState extends State<tela> {
                       child: Text(
                           discentes[index].datNasc,
                           style:
-                          new TextStyle(color: Colors.black38, fontSize: 25))),
+                          new TextStyle(color: Colors.black38, fontSize: 12))),
                   width: 150,
                   height: 150,
                   margin: new EdgeInsets.all(2.0),
@@ -133,6 +138,8 @@ class _telaState extends State<tela> {
                   ),
                   width: 150,
                   height: 150,
+                  margin: new EdgeInsets.all(2.0),
+
                 )),
             Expanded(
                 flex: 1,
@@ -152,12 +159,14 @@ class _telaState extends State<tela> {
                     },
                     child: Text(
                       "editar",
-                      style: new TextStyle(fontSize: 24),
+                      style: new TextStyle(fontSize: 12),
                     ),
                   ),
                   width: 150,
                   height: 150,
-                )),
+                  margin: new EdgeInsets.all(2.0),
+                )
+            ),
           ],
         ));
   }
