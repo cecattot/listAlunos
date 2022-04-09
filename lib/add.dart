@@ -85,7 +85,9 @@ class _addState extends State<add> {
             style: TextButton.styleFrom(backgroundColor: Colors.black12),
             onPressed: (){
               setState(() {
-                alunos a = alunos(nome: txtNome.text, matricula: txtMatricula.text, datNasc: dateinput.text, id: ultimo+1);
+                ultimo++;
+                ultimo++;
+                alunos a = alunos(nome: txtNome.text, matricula: txtMatricula.text, datNasc: dateinput.text, id: ultimo);
                 model().inserirAluno(a);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => telaMain()
