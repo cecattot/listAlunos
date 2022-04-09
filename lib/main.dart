@@ -76,86 +76,51 @@ class _telaState extends State<tela> {
 
   Widget itemBuilder(BuildContext context, int index) {
     return Container(
-        child: Row(
-          children: [
-            Expanded(
-                flex: 2,
-                child: Container(
-                  color: Colors.black12,
-                  child: Center(
-                      child: Text(discentes[index].nome,
-                          style:
-                          const TextStyle(color: Colors.blueGrey))),
-                  width: 30,
-                  height: 30,
-                  margin: const EdgeInsets.all(2.0),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.black12,
-                  child: Center(
-                      child: Text(discentes[index].matricula,
-                          style:
-                          const TextStyle(color: Colors.blueGrey, fontSize: 12))),
-                  margin: const EdgeInsets.all(2.0),
-                  width: 30,
-                  height: 30,
-                )),
-            Expanded(
-                flex: 2,
-                child: Container(
-                  color: Colors.black12,
-                  child: Center(
-                      child: Text(
-                          discentes[index].datNasc,
-                          style:
-                          const TextStyle(color: Colors.blueGrey))),
-                  width: 40,
-                  height: 30,
-                  margin: const EdgeInsets.all(2.0),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: Colors.blueGrey),
-                    onPressed: () {
-                      setState(() {
-                        model().deletarAluno(discentes[index].id);
-                        discentes.removeAt(index);
-                      });
-                    },
-                    child: Icon(Icons.delete),
-                  ),
-                  width: 30,
-                  height: 30,
-                  margin: const EdgeInsets.all(2.0),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: Colors.blueGrey),
-                    onPressed: () {
-                      setState(() {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                edit(
-                                  al: discentes[index],
-                                )
-                        ));
-                      });
-                    },
-                    child: Icon(Icons.edit),
-                  ),
-                  width: 30,
-                  height: 30,
-                  margin: const EdgeInsets.all(2.0),
-                )),
-          ],
-        ));
+        child: ListTile(
+          title: Text(discentes[index].nome),
+          tileColor: Colors.black12,
+          subtitle: Column(children: [Container(child: Text(discentes[index].datNasc,), alignment: AlignmentDirectional.topStart),
+           Container(child: Text(discentes[index].matricula), alignment: AlignmentDirectional.topStart)]),
+          leading: GestureDetector(
+            child: Wrap(
+              children: [
+                Container(child: ElevatedButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.blueGrey),
+                onPressed: () {
+                  setState(() {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            edit(al: discentes[index],)
+                    )
+                    );
+                  }
+                  );
+                },
+                child: Icon(Icons.edit),
+                ),
+                margin: const EdgeInsets.all(2.0),
+              ),
+              Container(child: ElevatedButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.blueGrey),
+                onPressed: () {
+                  setState(() {
+                    model().deletarAluno(discentes[index].id);
+                    discentes.removeAt(index);
+                  });
+                },
+                child: Icon(Icons.delete),
+              ),
+                margin: const EdgeInsets.all(2.0),
+
+              ),
+              ]
+            ),
+          ),
+
+        ),
+        margin: const EdgeInsets.all(2.0),
+    );
   }
 }
