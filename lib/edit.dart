@@ -43,7 +43,7 @@ class _editState extends State<edit> {
             height:150,
             child:Center(
                 child:TextField(
-                  controller: dateinput, //editing controller of this TextField
+                  controller: dateinput, //editing controller of th'is TextField
                   decoration: InputDecoration(
                       icon: Icon(Icons.calendar_today), //icon of text field
                       labelText: "Data de Nascimento" //label text of field

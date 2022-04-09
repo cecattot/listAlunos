@@ -50,30 +50,26 @@ class _telaState extends State<tela> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Expanded(child: Container(),),
         Expanded(
-            flex: 7,
+            flex: 21,
             child: ListView.builder(
               itemBuilder: itemBuilder,
               itemCount: discentes.length,
             )),
         Expanded(
-            flex: 1,
-            child:
-            Container(child:
-              ElevatedButton(
-                style: TextButton.styleFrom(backgroundColor: Colors.black45),
-                onPressed: () {
-                  setState(() {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => add(ultimo: discentes.length)
-                    ));
-                  });
-                },
-                child: Icon(Icons.add),
-              ),
-              margin: new EdgeInsets.all(2.0),
-          )
-        )
+            flex: 2,
+            child: ElevatedButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.black45),
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => add(ultimo: discentes.length)
+                  ));
+                });
+              },
+              child: Icon(Icons.add),
+            ))
       ],
     );
   }
@@ -89,10 +85,10 @@ class _telaState extends State<tela> {
                   child: Center(
                       child: Text(discentes[index].nome,
                           style:
-                          new TextStyle(color: Colors.black38, fontSize: 30))),
-                  width: 150,
-                  height: 150,
-                  margin: new EdgeInsets.all(2.0),
+                          const TextStyle(color: Colors.blueGrey))),
+                  width: 30,
+                  height: 30,
+                  margin: const EdgeInsets.all(2.0),
                 )),
             Expanded(
                 flex: 1,
@@ -101,10 +97,10 @@ class _telaState extends State<tela> {
                   child: Center(
                       child: Text(discentes[index].matricula,
                           style:
-                          new TextStyle(color: Colors.black38, fontSize: 12))),
-                  width: 150,
-                  height: 150,
-                  margin: new EdgeInsets.all(2.0),
+                          const TextStyle(color: Colors.blueGrey, fontSize: 12))),
+                  margin: const EdgeInsets.all(2.0),
+                  width: 30,
+                  height: 30,
                 )),
             Expanded(
                 flex: 2,
@@ -114,39 +110,35 @@ class _telaState extends State<tela> {
                       child: Text(
                           discentes[index].datNasc,
                           style:
-                          new TextStyle(color: Colors.black38, fontSize: 12))),
-                  width: 150,
-                  height: 150,
-                  margin: new EdgeInsets.all(2.0),
+                          const TextStyle(color: Colors.blueGrey))),
+                  width: 40,
+                  height: 30,
+                  margin: const EdgeInsets.all(2.0),
                 )),
             Expanded(
                 flex: 1,
                 child: Container(
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.black12),
+                        backgroundColor: Colors.blueGrey),
                     onPressed: () {
                       setState(() {
                         model().deletarAluno(discentes[index].id);
                         discentes.removeAt(index);
                       });
                     },
-                    child: Text(
-                      "-",
-                      style: new TextStyle(fontSize: 24),
-                    ),
+                    child: Icon(Icons.delete),
                   ),
-                  width: 150,
-                  height: 150,
-                  margin: new EdgeInsets.all(2.0),
-
+                  width: 30,
+                  height: 30,
+                  margin: const EdgeInsets.all(2.0),
                 )),
             Expanded(
                 flex: 1,
                 child: Container(
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.black12),
+                        backgroundColor: Colors.blueGrey),
                     onPressed: () {
                       setState(() {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -157,16 +149,12 @@ class _telaState extends State<tela> {
                         ));
                       });
                     },
-                    child: Text(
-                      "editar",
-                      style: new TextStyle(fontSize: 12),
-                    ),
+                    child: Icon(Icons.edit),
                   ),
-                  width: 150,
-                  height: 150,
-                  margin: new EdgeInsets.all(2.0),
-                )
-            ),
+                  width: 30,
+                  height: 30,
+                  margin: const EdgeInsets.all(2.0),
+                )),
           ],
         ));
   }
